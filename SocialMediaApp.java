@@ -204,7 +204,7 @@ public class SocialMediaApp extends JFrame {
     }
 
     private void trackUserInteractions(String userName, String interactionType, String targetContent) {
-        String targetUserName = "Post Creator"; // Assuming target is the post creator
+        String targetUserName = "Post Creator";
         socialGraph.addEdge(new Node(userName), new Node(targetUserName), interactionType);
 
         UserProfile userProfile = userProfiles.getOrDefault(userName, new UserProfile(userName));
@@ -224,7 +224,6 @@ public class SocialMediaApp extends JFrame {
         List<String> recommendations = new ArrayList<>();
         UserProfile userProfile = userProfiles.get(userName);
         if (userProfile != null) {
-            // Gather interests of connected users
             for (String connection : userProfile.connections) {
                 UserProfile connectedProfile = userProfiles.get(connection);
                 if (connectedProfile != null) {
@@ -236,7 +235,6 @@ public class SocialMediaApp extends JFrame {
     }
 
     private void displayRecommendedContentUI(List<String> recommendations) {
-        // Create a dialog box to display recommended content
         StringBuilder contentMessage = new StringBuilder("<html><body>");
         contentMessage.append("<h3>Recommended Content</h3>");
         if (recommendations.isEmpty()) {
@@ -244,20 +242,15 @@ public class SocialMediaApp extends JFrame {
         } else {
             for (String recommendation : recommendations) {
                 contentMessage.append("<p>").append(recommendation).append("</p>");
-                // Add like, dislike, and comment buttons for each recommended content
                 JButton likeButton = new JButton("Like");
                 likeButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        // Track the feedback when the user likes the content
-                        // For demonstration, we print the liked content
                         System.out.println("Liked Content: " + recommendation);
                     }
                 });
                 JButton dislikeButton = new JButton("Dislike");
                 dislikeButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        // Track the feedback when the user dislikes the content
-                        // For demonstration, we print the disliked content
                         System.out.println("Disliked Content: " + recommendation);
                     }
                 });
