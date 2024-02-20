@@ -170,7 +170,7 @@ public class SocialMediaApp extends JFrame {
         }
     }
 
-    // User profile class
+
     private class UserProfile {
         private String userName;
         private List<String> interests;
@@ -216,7 +216,6 @@ public class SocialMediaApp extends JFrame {
             targetProfile.addInterest("Liked posts");
             userProfiles.put(targetUserName, targetProfile);
         }
-        // Call the recommendation method after each interaction to update suggestions
         List<String> recommendations = recommendContent(userName);
         displayRecommendedContentUI(recommendations);
     }
